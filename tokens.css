@@ -1,0 +1,217 @@
+/* ──────────────────────────────────────────────────────────────
+   LYROS ACCOUNTING — DESIGN TOKENS
+   Lyros Pty Ltd (ABN 46 689 015 165) trading as Lyros Accounting
+   Single source of truth for color, type, spacing, radius, shadow.
+   ────────────────────────────────────────────────────────────── */
+
+/* ── LOCAL BRAND FONTS (variable DM Sans) ── */
+@font-face {
+  font-family: 'DM Sans';
+  src: url('fonts/DMSans-VariableFont_opsz_wght.ttf') format('truetype-variations'),
+       url('fonts/DMSans-VariableFont_opsz_wght.ttf') format('truetype');
+  font-weight: 100 1000;
+  font-stretch: 75% 125%;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DM Sans';
+  src: url('fonts/DMSans-Italic-VariableFont_opsz_wght.ttf') format('truetype-variations'),
+       url('fonts/DMSans-Italic-VariableFont_opsz_wght.ttf') format('truetype');
+  font-weight: 100 1000;
+  font-stretch: 75% 125%;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* ── CORE PALETTE (matches Webflow Site Variables) ── */
+  --black: #000000;
+  --grey-black: #1a1a1a;            /* primary page & email body background */
+  --white: #ffffff;
+  --off-white: #f4f4f4;
+  --paragraph: #d9d9e0;             /* body text on dark — never pure white */
+  --dimmed: #9999a5;                /* bullets & lists */
+  --subtitle: #999999;              /* subtitle text on dark */
+  --links: #c5e1fe;
+  --green: #3a9e6e;                 /* primary brand accent */
+
+  /* ── EXTENDED EMAIL PALETTE (n8n C1 Brand Config) ── */
+  --accent-soft: #2d7a55;
+  --bg-card: #222222;
+  --bg-card-inset: #2a2a2a;
+  --bg-bar-empty: #333333;
+  --border: #2a2a2a;
+  --border-soft: #1f1f1f;
+  --glow-center: #102a1c;
+  --glow-edge: #0c1f13;
+  --text-body: #e0e0e0;
+  --text-muted: #a0a0a0;
+  --text-dim: #707070;
+  --text-footer: #808080;
+  --text-disclaim: #6b6b6b;
+
+  /* ── STATUS TONES (use sparingly) ── */
+  --red-tone: #e5484d;
+  --amber-tone: #f5a524;
+  --blue-tone: #4dabf7;
+
+  /* ── TYPE ── */
+  --font-sans: 'DM Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-doc: Arial, Helvetica, sans-serif;      /* client documents */
+  --font-mono: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  /* Display scale (tightly leaded, heavy weight) */
+  --fs-display-xl: clamp(3.5rem, 6vw, 5.5rem);    /* 56–88px */
+  --fs-display-l:  clamp(2.75rem, 4.5vw, 4rem);   /* 44–64px */
+  --fs-display-m:  clamp(2.25rem, 3.5vw, 3rem);   /* 36–48px */
+  --fs-h1: 2.25rem;       /* 36 */
+  --fs-h2: 1.75rem;       /* 28 */
+  --fs-h3: 1.375rem;      /* 22 */
+  --fs-h4: 1.125rem;      /* 18 */
+  --fs-body-lg: 1.125rem; /* 18 */
+  --fs-body: 1rem;        /* 16 */
+  --fs-body-sm: 0.9375rem;/* 15 */
+  --fs-kicker: 0.75rem;   /* 12 — uppercase, tracked */
+  --fs-caption: 0.8125rem;/* 13 */
+
+  --lh-display: 1.02;
+  --lh-heading: 1.15;
+  --lh-body: 1.55;
+  --lh-tight: 1.25;
+
+  --tr-display: -0.02em;
+  --tr-heading: -0.012em;
+  --tr-body: 0em;
+  --tr-kicker: 0.14em;
+
+  /* ── SPACING (4px base) ── */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+  --s-10: 128px;
+
+  /* ── RADIUS ── */
+  --r-xs: 4px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+
+  /* ── SHADOWS (used sparingly — brand favours flat + borders) ── */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 6px 20px rgba(0,0,0,0.08);
+  --shadow-lg: 0 18px 50px rgba(0,0,0,0.14);
+  --shadow-glow: 0 0 80px rgba(58,158,110,0.18);
+
+  /* ── LAYOUT ── */
+  --container: 1200px;
+  --container-narrow: 880px;
+  --container-doc: 760px;           /* article column */
+}
+
+/* ─────────── BASE RESET (scoped to .lyros-page) ─────────── */
+.lyros-page * { box-sizing: border-box; }
+.lyros-page {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--grey-black);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+.lyros-page.dark {
+  background: var(--grey-black);
+  color: var(--paragraph);
+}
+
+/* ─────────── UTILITY: TYPE ─────────── */
+.t-kicker {
+  font-size: var(--fs-kicker);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: var(--tr-kicker);
+  color: var(--green);
+}
+.t-display-xl { font-size: var(--fs-display-xl); font-weight: 700; line-height: var(--lh-display); letter-spacing: var(--tr-display); }
+.t-display-l  { font-size: var(--fs-display-l);  font-weight: 700; line-height: var(--lh-display); letter-spacing: var(--tr-display); }
+.t-display-m  { font-size: var(--fs-display-m);  font-weight: 700; line-height: var(--lh-display); letter-spacing: var(--tr-display); }
+.t-h1 { font-size: var(--fs-h1); font-weight: 700; line-height: var(--lh-heading); letter-spacing: var(--tr-heading); }
+.t-h2 { font-size: var(--fs-h2); font-weight: 700; line-height: var(--lh-heading); letter-spacing: var(--tr-heading); }
+.t-h3 { font-size: var(--fs-h3); font-weight: 600; line-height: var(--lh-heading); letter-spacing: var(--tr-heading); }
+.t-h4 { font-size: var(--fs-h4); font-weight: 600; line-height: var(--lh-tight); }
+.t-lede  { font-size: var(--fs-body-lg); font-weight: 400; line-height: var(--lh-body); color: inherit; }
+.t-body  { font-size: var(--fs-body); font-weight: 400; line-height: var(--lh-body); }
+.t-small { font-size: var(--fs-body-sm); line-height: var(--lh-body); }
+.t-caption { font-size: var(--fs-caption); color: var(--text-muted); line-height: var(--lh-tight); }
+
+/* ─────────── MOTIF: Green dot starfield (hero + footer only) ─────────── */
+.lyros-starfield {
+  position: absolute; inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 15% 20%, rgba(58,158,110,0.55), transparent 60%),
+    radial-gradient(1px 1px at 72% 35%, rgba(58,158,110,0.45), transparent 60%),
+    radial-gradient(1px 1px at 40% 70%, rgba(58,158,110,0.40), transparent 60%),
+    radial-gradient(1px 1px at 88% 82%, rgba(58,158,110,0.55), transparent 60%),
+    radial-gradient(1px 1px at 25% 90%, rgba(58,158,110,0.35), transparent 60%),
+    radial-gradient(1.2px 1.2px at 62% 14%, rgba(58,158,110,0.50), transparent 60%),
+    radial-gradient(0.8px 0.8px at 8% 55%, rgba(58,158,110,0.40), transparent 60%),
+    radial-gradient(1px 1px at 95% 48%, rgba(58,158,110,0.45), transparent 60%),
+    radial-gradient(0.8px 0.8px at 50% 45%, rgba(58,158,110,0.30), transparent 60%),
+    radial-gradient(1px 1px at 33% 8%, rgba(58,158,110,0.50), transparent 60%);
+  pointer-events: none;
+}
+.lyros-hero-glow {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 55% at 50% 85%, var(--glow-center) 0%, var(--glow-edge) 40%, transparent 75%);
+  pointer-events: none;
+}
+
+/* ─────────── BUTTONS ─────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 22px;
+  font: 500 0.9375rem/1 var(--font-sans);
+  letter-spacing: 0;
+  border-radius: var(--r-pill);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 120ms ease, background 160ms ease, border-color 160ms ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: var(--black); color: var(--white); }
+.btn-primary:hover { background: var(--grey-black); }
+.btn-ghost-dark {
+  background: transparent; color: var(--green);
+  border-color: rgba(58,158,110,0.55);
+}
+.btn-ghost-dark:hover { background: rgba(58,158,110,0.08); border-color: var(--green); }
+.btn-ghost-light {
+  background: transparent; color: var(--black); border-color: var(--black);
+}
+.btn-ghost-light:hover { background: var(--black); color: var(--white); }
+
+/* ─────────── CARDS ─────────── */
+.card {
+  background: var(--white);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: var(--r-lg);
+  padding: var(--s-6);
+}
+.card-dark {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: var(--s-6);
+  color: var(--text-body);
+}
