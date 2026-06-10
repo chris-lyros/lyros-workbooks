@@ -1,0 +1,170 @@
+/* ──────────────────────────────────────────────────────────────
+   LYROS WORKBOOK FINDER — V2 OVERRIDES
+   Loaded after styles.css. Hero-only page, main-site nav, slim footer.
+   ────────────────────────────────────────────────────────────── */
+
+/* ─────────── NAV (matches www.lyros.com.au banner) ─────────── */
+.v2 .nav-inner {
+  grid-template-columns: auto 1fr;
+  gap: 40px;
+}
+.v2 .nav ul {
+  justify-self: end;
+  gap: 40px;
+}
+.v2 .nav ul a { color: var(--off-white); font-weight: 500; white-space: nowrap; }
+.v2 .nav ul a:hover { color: var(--green); }
+
+/* The simplified 4-link nav fits at tablet widths — undo the inherited
+   `display: none` from styles.css until phones. */
+@media (max-width: 980px) {
+  .v2 .nav ul { display: flex; gap: 24px; }
+}
+@media (max-width: 560px) {
+  .v2 .nav ul { gap: 16px; }
+  .v2 .nav-inner { padding: 16px 20px; gap: 16px; }
+  .v2 .nav ul a { font-size: 0.875rem; }
+}
+
+/* Keep monospace micro-labels on one line */
+.v2 .prompt-head .label,
+.v2 .prompt-head .meta,
+.v2 .result .label,
+.v2 .result-missing .label,
+.v2 .prompt-foot .hints span { white-space: nowrap; }
+
+/* ─────────── HERO fills the viewport ─────────── */
+.v2 .hero-inner { max-width: 1360px; }
+.v2 .prompt,
+.v2 .chips { width: 100%; max-width: 1150px; }
+
+.v2 .hero {
+  min-height: calc(100vh - 63px);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 72px 32px 88px;
+}
+.v2 .hero-inner { width: 100%; gap: 44px; }
+
+/* ─────────── BETA BADGE (inline with heading) ─────────── */
+.beta-badge {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 6px;
+  transform: translateY(-0.45em);
+  font: 500 0.6875rem/1 var(--font-mono);
+  letter-spacing: var(--tr-kicker);
+  text-transform: uppercase;
+  color: var(--green);
+  padding: 5px 10px;
+  border: 1px solid rgba(58,158,110,0.32);
+  border-radius: var(--r-pill);
+  background: rgba(58,158,110,0.08);
+}
+
+/* ─────────── PROMPT FOOT — send button only ─────────── */
+.v2 .prompt-foot { justify-content: flex-end; }
+
+/* ─────────── SMALL BUTTONS ─────────── */
+.btn.btn-sm {
+  padding: 9px 16px;
+  font-size: 0.8125rem;
+  gap: 8px;
+}
+
+/* ─────────── SEARCHING — sits below the (still visible) input ─────────── */
+.v2 .searching {
+  min-height: 0;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 16px 22px;
+}
+
+/* ─────────── RESULT (match) — single column, CTA-led ─────────── */
+.v2 .result { grid-template-columns: 1fr; gap: 12px; align-items: start; }
+
+.match-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.match-head h4 { flex-shrink: 1; }
+.match-flag {
+  font: 500 0.625rem/1 var(--font-mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+  padding: 4px 8px;
+  border: 1px solid rgba(58,158,110,0.3);
+  border-radius: var(--r-pill);
+  background: rgba(58,158,110,0.08);
+  white-space: nowrap;
+}
+.match-head .dl-btn { margin-left: auto; }
+
+.next-step {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding-top: 14px;
+  margin-top: 4px;
+  border-top: 1px solid var(--border-soft);
+}
+.xero-tick {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+.xero-tick svg { color: var(--green); flex-shrink: 0; }
+.next-step .actions { display: flex; gap: 8px; }
+
+.v2 .result-missing { grid-template-columns: 1fr; gap: 14px; }
+.v2 .result-missing .actions { margin-top: 2px; }
+
+/* ─────────── SLIM FOOTER ─────────── */
+.foot-slim { padding: 44px 32px 32px; }
+.foot-slim .foot-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px 32px;
+  margin-bottom: 28px;
+}
+.foot-slim img.logo { height: 22px; margin: 0; }
+.foot-slim .foot-links { display: flex; gap: 28px; }
+.foot-slim .foot-links a {
+  color: var(--paragraph);
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+.foot-slim .foot-links a:hover { color: var(--green); }
+.foot-slim .foot-contact {
+  display: flex; gap: 22px;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+.foot-slim .foot-contact a { color: var(--text-muted); text-decoration: none; }
+.foot-slim .foot-contact a:hover { color: var(--off-white); }
+.foot-slim .fine {
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: var(--text-disclaim);
+  max-width: 110ch;
+  margin: 0 0 20px;
+  text-wrap: pretty;
+}
+.foot-slim .bottom { margin-top: 0; padding-top: 20px; }
+
+@media (max-width: 720px) {
+  .v2 .hero { min-height: 0; }
+  .next-step { flex-direction: column; align-items: stretch; }
+  .next-step .actions { flex-direction: column; }
+  .next-step .actions .btn { justify-content: center; }
+  .match-head .dl-btn { margin-left: 0; width: 100%; justify-content: center; }
+  .foot-slim .foot-row { flex-direction: column; align-items: flex-start; }
+}

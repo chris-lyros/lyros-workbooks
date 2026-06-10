@@ -7,6 +7,7 @@
 <link rel="icon" href="assets/logomark-white.png" />
 <link rel="stylesheet" href="tokens.css" />
 <link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="styles-v2.css" />
 <template id="__bundler_thumbnail">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
   <rect width="600" height="600" fill="#1a1a1a"/>
@@ -30,45 +31,36 @@
 </svg>
 </template>
 </head>
-<body class="lyros-page dark">
+<body class="lyros-page dark v2">
 
-<!-- ─────────────────────────────  NAV  ───────────────────────────── -->
+<!-- ─────────────────────────────  NAV (matches www.lyros.com.au)  ───────────────────────────── -->
 <nav class="nav" data-screen-label="Nav">
   <div class="nav-inner">
-    <a href="#top" style="text-decoration:none;"><img class="logo" src="assets/logo-full-white.png" alt="Lyros Accounting" /></a>
+    <a href="https://www.lyros.com.au/" style="text-decoration:none;"><img class="logo" src="assets/logo-full-white.png" alt="Lyros Accounting" /></a>
     <ul>
-      <li><a href="#finder" class="active">Workbook finder</a></li>
-      <li><a href="#library">Library</a></li>
-      <li><a href="#contribute">Contribute</a></li>
-      <li><a href="#xero">Xero data</a></li>
-      <li><a href="#advisory">Advisory</a></li>
+      <li><a href="https://www.lyros.com.au/">Home</a></li>
+      <li><a href="https://www.lyros.com.au/insights">Insights</a></li>
+      <li><a href="https://www.lyros.com.au/contact">Contact</a></li>
+      <li><a href="https://www.lyros.com.au/automations">Automations</a></li>
     </ul>
-    <div class="nav-right">
-      <a href="#" class="signin">Sign in</a>
-      <a href="#finder" class="nav-pill">
-        <span class="beta">Beta</span>
-        <span>Free workbook finder</span>
-      </a>
-    </div>
   </div>
 </nav>
 
-<!-- ─────────────────────────────  HERO  ───────────────────────────── -->
-<section id="finder" class="hero" data-screen-label="01 Hero">
+<!-- ─────────────────────────────  HERO (the whole page)  ───────────────────────────── -->
+<section id="finder" class="hero" data-screen-label="01 Finder">
   <div class="glow"></div>
   <div class="stars"></div>
   <div class="hero-inner">
     <div class="hero-copy">
-      <span class="kicker boxed"><span class="dot"></span> Free workbook library · Beta</span>
-      <h1>Describe the workbook <em>you need.</em></h1>
-      <p class="lede">Tell us in plain English. We match it to a free XLSX in the Lyros library, built in-house for Australian businesses on Xero.</p>
+      <h1>Describe the workbook <em>you need.</em> <span class="beta-badge">Beta</span></h1>
+      <p class="lede">Tell us in plain English and we'll match it to a workbook in the Lyros library.</p>
     </div>
 
     <!-- Interactive prompt -->
     <div class="prompt" id="promptBox">
       <div class="prompt-head">
         <div class="label"><span class="dot"></span> Workbook request</div>
-        <div class="meta">Free · no sign-up</div>
+        <div class="meta">No sign-up</div>
       </div>
 
       <!-- INPUT STATE -->
@@ -89,8 +81,8 @@
         </div>
         <div class="search-step" data-step="2">
           <span class="ico"></span>
-          <span>Searching Lyros workbook library…</span>
-          <span class="meta">38 workbooks</span>
+          <span>Searching the current workbook library…</span>
+          <span class="meta">25 workbooks</span>
         </div>
         <div class="search-step" data-step="3">
           <span class="ico"></span>
@@ -101,56 +93,41 @@
 
       <!-- MATCH RESULT STATE -->
       <div class="result" data-state="match" hidden>
-        <div class="label" style="display:flex;justify-content:space-between;width:100%;">
-          <span><span class="dot" style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--green);margin-right:8px;"></span> Closest match</span>
-          <button class="reset-link" data-reset>↻ Try another</button>
-        </div>
-        <div>
+        <div class="match-head">
           <h4 id="matchTitle">Monthly Management Report Pack</h4>
-          <div class="desc" id="matchDesc">Revenue, gross margin, wages, cash movement and month-on-month commentary.</div>
-          <div class="tags" id="matchTags"></div>
-        </div>
-        <div class="actions">
-          <a class="btn btn-green" href="#">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-            Download XLSX
+          <span class="match-flag">Closest match</span>
+          <a class="btn btn-green btn-sm dl-btn" id="downloadBtn" href="#" download>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M6 11l6 6 6-6M4 21h16"/></svg>
+            Download
           </a>
-          <a class="btn btn-ghost-light" href="#">Request custom</a>
         </div>
-        <a class="xero-inline" href="#xero" data-link-xero>
-          <span class="xero-inline-ico">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
-          </span>
-          <span class="xero-inline-text">
-            <b>Link my Xero data to this workbook</b>
-            <span class="sub">Populate it with your live Xero data. No LLM. Microsoft and Xero APIs only.</span>
-          </span>
-          <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-        </a>
+        <div class="desc" id="matchDesc">Revenue, gross margin, wages, cash movement and month-on-month commentary.</div>
+        <div class="next-step">
+          <div class="xero-tick">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            This workbook is currently setup for Xero integration
+          </div>
+          <div class="actions">
+            <a class="btn btn-ghost-light btn-sm" href="https://www.lyros.com.au/contact">Book a 15-minute call</a>
+            <a class="btn btn-ghost-light btn-sm" id="enquireLink" href="mailto:chris@lyros.com.au">Enquire by email</a>
+          </div>
+        </div>
       </div>
 
       <!-- MISSING STATE -->
       <div class="result-missing" data-state="missing" hidden>
-        <div class="label" style="display:flex;justify-content:space-between;width:100%;">
-          <span>Not in the library yet</span>
-          <button class="reset-link" data-reset>↻ Try another</button>
-        </div>
+        <div class="label"><span>Not in the library yet</span></div>
         <div>
           <h4>We haven't built this one yet, but we can.</h4>
-          <div class="desc">Lyros builds workbooks in-house, ranked by demand. Add yours to the queue and we'll notify you when it ships.</div>
+          <div class="desc">Lyros builds workbooks in-house. Send us the request and we'll let you know when it's ready, or talk it through on a call.</div>
         </div>
         <div class="actions">
-          <a class="btn btn-green" href="#contribute">Add to the queue</a>
-          <a class="btn btn-ghost-light" href="#contribute">Upload your own</a>
+          <a class="btn btn-green btn-sm" id="requestLink" href="mailto:chris@lyros.com.au">Request this workbook</a>
+          <a class="btn btn-ghost-light btn-sm" href="https://www.lyros.com.au/contact">Book a call</a>
         </div>
       </div>
 
       <div class="prompt-foot">
-        <div class="hints">
-          <span><kbd>⌘</kbd><kbd>↵</kbd> to search</span>
-          <span style="color:var(--green);">·</span>
-          <span>No account needed</span>
-        </div>
         <button class="send" id="sendBtn" type="button">
           Find a workbook
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -164,507 +141,41 @@
       <button class="chip" data-chip="Monthly management report"><span class="plus">+</span> Monthly management report</button>
       <button class="chip" data-chip="Cash flow workbook"><span class="plus">+</span> Cash flow workbook</button>
       <button class="chip" data-chip="Xero board pack"><span class="plus">+</span> Board pack</button>
-      <button class="chip" data-chip="Payroll risk report"><span class="plus">+</span> Payroll risk</button>
+      <button class="chip" data-chip="Payroll to revenue"><span class="plus">+</span> Payroll to revenue</button>
       <button class="chip" data-chip="GST timing report"><span class="plus">+</span> GST timing</button>
       <button class="chip" data-chip="Budget vs actual"><span class="plus">+</span> Budget vs actual</button>
       <button class="chip" data-chip="Margin analysis"><span class="plus">+</span> Margin analysis</button>
+      <button class="chip" data-chip="Supplier spend review"><span class="plus">+</span> Supplier spend</button>
+      <button class="chip" data-chip="Working capital tracker"><span class="plus">+</span> Working capital</button>
+      <button class="chip" data-chip="Aged receivables"><span class="plus">+</span> Aged receivables</button>
     </div>
   </div>
 </section>
 
-<!-- ─────────────────────────────  TRUST STRIP  ───────────────────────────── -->
-<div class="trust">
-  <div class="trust-inner">
-    <div class="trust-item"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span> Built for Xero finance teams</div>
-    <div class="trust-item"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span> XLSX workbooks, not generic PDFs</div>
-    <div class="trust-item"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span> Free library access</div>
-    <div class="trust-item"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span> Beta catalogue expanding weekly</div>
-    <div class="trust-item"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg></span> Advisory support available</div>
-  </div>
-</div>
-
-<!-- ─────────────────────────────  HOW IT WORKS  ───────────────────────────── -->
-<section class="section" data-screen-label="02 How it works">
-  <div class="wrap">
-    <div class="section-head stack">
-      <div>
-        <span class="kicker"><span class="dot"></span> How it works</span>
-        <h2>Plain English in. Working XLSX out.</h2>
-      </div>
-    </div>
-
-    <div class="how-grid">
-      <div class="how-card">
-        <span class="ico-tile">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v14H7l-3 3z"/><path d="M8 10h8M8 13h5"/></svg>
-        </span>
-        <div class="step-num"><span class="badge">01</span> Ask</div>
-        <h3>Describe what you need</h3>
-        <p>Plain English. The more specific, the better the match.</p>
-      </div>
-
-      <div class="how-card">
-        <span class="ico-tile">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
-        </span>
-        <div class="step-num"><span class="badge">02</span> Match</div>
-        <h3>We find the closest workbook</h3>
-        <p>Ranked by fit against the in-house Lyros catalogue.</p>
-      </div>
-
-      <div class="how-card">
-        <span class="ico-tile">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 19h14"/></svg>
-        </span>
-        <div class="step-num"><span class="badge">03</span> Use</div>
-        <h3>Download or link to Xero</h3>
-        <p>Free XLSX, or populate it with your live Xero data.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─────────────────────────────  EXAMPLE PANEL  ───────────────────────────── -->
-<!-- (removed) -->
-
-<!-- ─────────────────────────────  XERO-CONNECTED  ───────────────────────────── -->
-<section id="xero" class="section section-xero" data-screen-label="04 Xero-connected">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <span class="kicker"><span class="dot"></span> Xero-connected reports · optional</span>
-        <h2>Populate the workbook with <em>your</em> Xero data.</h2>
-      </div>
-      <p class="lede">Invite Lyros as an advisor. We pull your data through the Xero and Microsoft APIs, write it straight into the workbook, and send the XLSX back.</p>
-    </div>
-
-    <!-- Data-handling callout -->
-    <div class="data-callout">
-      <div class="data-callout-row">
-        <span class="shield">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-12V5l8-3 8 3v5c0 7.5-8 12-8 12z"/><path d="M9 12l2 2 4-4"/></svg>
-        </span>
-        <div class="data-callout-text">
-          <h4>No LLM touches your finance data.</h4>
-          <p>This is a direct API pipeline. The Xero API for the data, the Microsoft Graph API to write it into Excel. Both are stable, audited, decade-old APIs. Nothing is sent to a model. Nothing is stored beyond the run.</p>
-        </div>
-      </div>
-      <div class="data-callout-pipes">
-        <div class="pipe">
-          <span class="pipe-ico xero">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>
-          </span>
-          <div>
-            <div class="pipe-label">Xero API</div>
-            <div class="pipe-sub">Read-only · scoped to advisor access · audited</div>
-          </div>
-        </div>
-        <span class="pipe-arrow">→</span>
-        <div class="pipe">
-          <span class="pipe-ico ms">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8"/><rect x="13" y="3" width="8" height="8"/><rect x="3" y="13" width="8" height="8"/><rect x="13" y="13" width="8" height="8"/></svg>
-          </span>
-          <div>
-            <div class="pipe-label">Microsoft Graph API</div>
-            <div class="pipe-sub">Writes values direct to XLSX cells</div>
-          </div>
-        </div>
-        <span class="pipe-arrow">→</span>
-        <div class="pipe">
-          <span class="pipe-ico xlsx">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h10l4 4v14H5z"/><path d="M14 3v5h5"/></svg>
-          </span>
-          <div>
-            <div class="pipe-label">Your XLSX, ready</div>
-            <div class="pipe-sub">Returned to you · nothing retained</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="xero-frame">
-      <div class="xero-side">
-        <h3>Five steps from invite to delivered report.</h3>
-        <p class="body">Access is scoped, consent is explicit, and the data leaves your Xero org only when you confirm a run.</p>
-
-        <div class="cta-stack">
-          <a class="btn btn-green" href="#">
-            Start Xero-connected report
-            <svg class="arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </a>
-          <a class="btn btn-ghost-light" href="#">Read disclosure</a>
-        </div>
-        <div class="disclosure">Xero access used only after invitation, acceptance and explicit consent.</div>
-      </div>
-
-      <div class="xero-steps">
-        <div class="xero-step">
-          <span class="n">1</span>
-          <div>
-            <div class="label">Invite Lyros to Xero</div>
-            <div class="sub">Add as advisor to your organisation.</div>
-          </div>
-          <span class="status ok">Ready</span>
-        </div>
-        <div class="xero-step">
-          <span class="n">2</span>
-          <div>
-            <div class="label">Confirm consent</div>
-            <div class="sub">Read-only scope, revocable any time.</div>
-          </div>
-          <span class="status ok">Reviewed</span>
-        </div>
-        <div class="xero-step">
-          <span class="n">3</span>
-          <div>
-            <div class="label">Pick the workbook</div>
-            <div class="sub">From the library, or request a new one.</div>
-          </div>
-          <span class="status now">Now</span>
-        </div>
-        <div class="xero-step">
-          <span class="n">4</span>
-          <div>
-            <div class="label">We populate it</div>
-            <div class="sub">Xero API → Microsoft Graph → your XLSX.</div>
-          </div>
-          <span class="status">Queued</span>
-        </div>
-        <div class="xero-step">
-          <span class="n">5</span>
-          <div>
-            <div class="label">Download or book a call</div>
-            <div class="sub">Hand-off back, or set as a monthly run.</div>
-          </div>
-          <span class="status">Pending</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─────────────────────────────  CATALOGUE  ───────────────────────────── -->
-<section id="library" class="section" data-screen-label="05 Library">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <span class="kicker"><span class="dot"></span> Workbook library</span>
-        <h2>Built in-house. Ranked by you.</h2>
-      </div>
-      <div>
-        <p class="lede" style="margin-bottom: 22px;">Every workbook is built by Lyros. What we build next is decided by request volume. The more people ask for something, the sooner it ships.</p>
-        <div class="cat-filters" id="catFilters">
-          <button class="cat-filter active" data-filter="all">All <span class="count">10</span></button>
-          <button class="cat-filter" data-filter="pnl">P&amp;L <span class="count">4</span></button>
-          <button class="cat-filter" data-filter="cash">Cash flow <span class="count">2</span></button>
-          <button class="cat-filter" data-filter="compliance">Compliance <span class="count">2</span></button>
-          <button class="cat-filter" data-filter="payroll">Payroll <span class="count">1</span></button>
-          <button class="cat-filter" data-filter="suppliers">Suppliers <span class="count">1</span></button>
-        </div>
-      </div>
-    </div>
-
-    <div class="catalogue-grid" id="catalogue">
-      <a class="cat-card" data-category="pnl" data-status="available" href="#">
-        <div class="top">
-          <div class="file-tile">XLSX</div>
-          <span class="status available">Available</span>
-        </div>
-        <h3>Management Reporting Pack</h3>
-        <p>P&amp;L, margin bridge, wages, working capital and commentary.</p>
-        <div class="footer-tags">
-          <span class="tag">P&amp;L</span>
-          <span class="tag xero-ok"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg> Xero API</span>
-          <span class="req">21%</span>
-        </div>
-      </a>
-
-      <a class="cat-card" data-category="cash" data-status="available" href="#">
-        <div class="top">
-          <div class="file-tile">XLSX</div>
-          <span class="status available">Available</span>
-        </div>
-        <h3>Cash Flow Timing Workbook</h3>
-        <p>Rolling 13-week cash, payroll risk, GST and supplier timing.</p>
-        <div class="footer-tags">
-          <span class="tag">Cash flow</span>
-          <span class="tag xero-ok"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg> Xero API</span>
-          <span class="req">20%</span>
-        </div>
-      </a>
-
-      <a class="cat-card" data-category="pnl" data-status="available" href="#">
-        <div class="top">
-          <div class="file-tile">XLSX</div>
-          <span class="status available">Available</span>
-        </div>
-        <h3>Budget vs Actual Workbook</h3>
-        <p>Monthly variance, YTD bridge, departmental rollup.</p>
-        <div class="footer-tags">
-          <span class="tag">P&amp;L</span>
-          <span class="tag xero-ok"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg> Xero API</span>
-          <span class="req">14%</span>
-        </div>
-      </a>
-
-      <a class="cat-card" data-category="suppliers" data-status="available" href="#">
-        <div class="top">
-          <div class="file-tile">XLSX</div>
-          <span class="status available">Available</span>
-        </div>
-        <h3>Supplier Spend Review</h3>
-        <p>Top suppliers, ABN dedup, payment terms, concentration.</p>
-        <div class="footer-tags">
-          <span class="tag">Suppliers</span>
-          <span class="tag xero-ok"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg> Xero API</span>
-          <span class="req">10%</span>
-        </div>
-      </a>
-
-      <a class="cat-card" data-category="payroll" data-status="available" href="#">
-        <div class="top">
-          <div class="file-tile">XLSX</div>
-          <span class="status available">Available</span>
-        </div>
-        <h3>Payroll &amp; Wages Analysis</h3>
-        <p>Headcount, ratios, leave liability, payroll-to-revenue.</p>
-        <div class="footer-tags">
-          <span class="tag">Payroll</span>
-          <span class="tag xero-ok"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg> Xero API</span>
-          <span class="req">9%</span>
-        </div>
-      </a>
-
-      <a class="cat-card" data-category="pnl" data-status="available" href="#">
-        <div class="top">
-          <div class="file-tile">XLSX</div>
-          <span class="status available">Available</span>
-        </div>
-        <h3>Board Reporting Pack</h3>
-        <p>One-page summary, KPIs, financials, cash and CFO commentary.</p>
-        <div class="footer-tags">
-          <span class="tag">P&amp;L</span>
-          <span class="tag xero-ok"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg> Xero API</span>
-          <span class="req">8%</span>
-        </div>
-      </a>
-
-      <a class="cat-card" data-category="compliance" data-status="beta" href="#">
-        <div class="top">
-          <div class="file-tile">XLSX</div>
-          <span class="status beta">Beta</span>
-        </div>
-        <h3>GST &amp; BAS Timing Tracker</h3>
-        <p>BAS cycle, GST cash impact, instalment ladder.</p>
-        <div class="footer-tags">
-          <span class="tag">Compliance</span>
-          <span class="tag xero-ok"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg> Xero API</span>
-          <span class="req">7%</span>
-        </div>
-      </a>
-
-      <a class="cat-card" data-category="pnl" data-status="beta" href="#">
-        <div class="top">
-          <div class="file-tile">XLSX</div>
-          <span class="status beta">Beta</span>
-        </div>
-        <h3>Revenue &amp; Margin Bridge</h3>
-        <p>Volume, price and mix bridge. Explains what moved.</p>
-        <div class="footer-tags">
-          <span class="tag">P&amp;L</span>
-          <span class="tag xero-ok"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg> Xero API</span>
-          <span class="req">5%</span>
-        </div>
-      </a>
-
-      <a class="cat-card coming" data-category="cash" data-status="soon" href="#">
-        <div class="top">
-          <div class="file-tile">XLSX</div>
-          <span class="status soon">Coming soon</span>
-        </div>
-        <h3>Working Capital Tracker</h3>
-        <p>Debtor days, creditor days, inventory and the cycle.</p>
-        <div class="footer-tags">
-          <span class="tag">Cash flow</span>
-          <span class="tag xero-ok"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg> Xero API</span>
-          <span class="req">4%</span>
-        </div>
-      </a>
-
-      <a class="cat-card coming" data-category="compliance" data-status="soon" href="#">
-        <div class="top">
-          <div class="file-tile">XLSX</div>
-          <span class="status soon">Coming soon</span>
-        </div>
-        <h3>Xero Account Review Checklist</h3>
-        <p>Pre-close checks for chart-of-accounts and reconciliation.</p>
-        <div class="footer-tags">
-          <span class="tag">Compliance</span>
-          <span class="tag manual">Manual workbook</span>
-          <span class="req">2%</span>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ─────────────────────────────  CONTRIBUTE (request + upload)  ───────────────────────────── -->
-<section id="contribute" class="section no-pad-top" data-screen-label="06 Contribute">
-  <div class="wrap">
-    <div class="contribute-grid">
-      <div class="contribute-card request">
-        <span class="kicker"><span class="dot"></span> Request</span>
-        <h3>Can't find what you need?</h3>
-        <p>Tell us. Requests rank the queue. The more people ask, the sooner it ships.</p>
-        <form class="missing-form" onsubmit="event.preventDefault();">
-          <textarea placeholder="e.g. A weekly cash forecast for a hospitality group with three venues and seasonal staff."></textarea>
-          <div class="row">
-            <span class="hint">Email kept private · only used to notify you</span>
-            <button class="btn btn-green" type="submit">Add to queue</button>
-          </div>
-        </form>
-      </div>
-
-      <div class="contribute-card upload">
-        <span class="kicker"><span class="dot"></span> Contribute</span>
-        <h3>Built your own? Share it.</h3>
-        <p>If you have a workbook that works, send it in. Lyros reviews, formats and credits it before adding to the library.</p>
-        <label class="upload-drop">
-          <input type="file" accept=".xlsx,.xls,.csv" hidden />
-          <span class="upload-ico">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/></svg>
-          </span>
-          <span class="upload-text">
-            <b>Drop an XLSX</b>
-            <span class="sub">or click to browse. Reviewed before publishing</span>
-          </span>
-        </label>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─────────────────────────────  ADVISORY  ───────────────────────────── -->
-<section id="advisory" class="section" data-screen-label="07 Advisory">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <span class="kicker"><span class="dot"></span> Advisory</span>
-        <h2>Need this run every month?</h2>
-      </div>
-      <p class="lede">If a workbook solves the problem once, Lyros can turn it into a recurring reporting rhythm.</p>
-    </div>
-
-    <div class="adv-grid">
-      <div class="adv-card">
-        <span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/><path d="M8 4v4M16 4v4"/></svg></span>
-        <div class="freq">Monthly</div>
-        <div class="name">Management reporting</div>
-      </div>
-      <div class="adv-card">
-        <span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></svg></span>
-        <div class="freq">Custom</div>
-        <div class="name">Custom Xero workbooks</div>
-      </div>
-      <div class="adv-card">
-        <span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19l4-8 4 4 4-10 4 14"/></svg></span>
-        <div class="freq">Recurring</div>
-        <div class="name">Board pack automation</div>
-      </div>
-      <div class="adv-card">
-        <span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.5-2-3.4-2.4.9a7 7 0 0 0-2-1.2L14 3h-4l-.5 2.6a7 7 0 0 0-2 1.2L5.1 5.9l-2 3.4 2 1.5A7 7 0 0 0 5 12c0 .4 0 .8.1 1.2l-2 1.5 2 3.4 2.4-.9a7 7 0 0 0 2 1.2L10 21h4l.5-2.6a7 7 0 0 0 2-1.2l2.4.9 2-3.4-2-1.5c.1-.4.1-.8.1-1.2z"/></svg></span>
-        <div class="freq">Project</div>
-        <div class="name">Finance process design</div>
-      </div>
-      <div class="adv-card">
-        <span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>
-        <div class="freq">Retainer</div>
-        <div class="name">Fractional CFO support</div>
-      </div>
-    </div>
-
-    <div class="adv-cta">
-      <div class="copy">
-        <b>Book a finance reporting call.</b><br/>
-        30 minutes on what's working, what's not, and whether a recurring rhythm fits.
-      </div>
-      <div style="display:flex;gap:10px;flex-shrink:0;">
-        <a class="btn btn-green" href="#">Book a call</a>
-        <a class="btn btn-ghost-light" href="#">View scope</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─────────────────────────────  FOOTER  ───────────────────────────── -->
-<footer class="foot" data-screen-label="08 Footer">
-  <div class="stars"></div>
+<!-- ─────────────────────────────  FOOTER (slim, matches main site)  ───────────────────────────── -->
+<footer class="foot foot-slim" data-screen-label="02 Footer">
   <div class="foot-inner">
-    <div class="foot-top">
-      <div>
-        <img class="logo" src="assets/logo-full-white.png" alt="Lyros Accounting" />
-        <p class="bio">Lyros Accounting is the trading name of Lyros Pty Ltd, a Melbourne finance automation and fractional CFO practice for Australian SMEs and finance teams running on Xero.</p>
-        <div style="margin-top:18px;"><span class="beta-tag">Beta · workbook library</span></div>
+    <div class="foot-row">
+      <a href="https://www.lyros.com.au/" style="text-decoration:none;"><img class="logo" src="assets/logo-full-white.png" alt="Lyros Accounting" /></a>
+      <div class="foot-links">
+        <a href="https://www.lyros.com.au/">Home</a>
+        <a href="https://www.lyros.com.au/contact">Contact</a>
+        <a href="https://www.lyros.com.au/privacy-policy">Privacy Policy</a>
       </div>
-      <div>
-        <h4>Workbook finder</h4>
-        <ul>
-          <li><a href="#finder">Find a workbook</a></li>
-          <li><a href="#library">Browse library</a></li>
-          <li><a href="#contribute">Request or contribute</a></li>
-          <li><a href="#xero">Xero-connected</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Advisory</h4>
-        <ul>
-          <li><a href="#advisory">Management reporting</a></li>
-          <li><a href="#advisory">Custom Xero workbooks</a></li>
-          <li><a href="#advisory">Board pack automation</a></li>
-          <li><a href="#advisory">Fractional CFO</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Contact</h4>
-        <ul>
-          <li style="color:var(--text-muted);">Melbourne, Australia</li>
-          <li><a href="/cdn-cgi/l/email-protection#33505b415a40735f4a415c401d505c5e1d5246"><span class="__cf_email__" data-cfemail="690a011b001a2905101b061a470a060447081c">[email&#160;protected]</span></a></li>
-          <li><a href="https://www.lyros.com.au">www.lyros.com.au</a></li>
-        </ul>
+      <div class="foot-contact">
+        <a href="mailto:chris@lyros.com.au">chris@lyros.com.au</a>
+        <a href="tel:+61466562403">+61 4 6656 2403</a>
       </div>
     </div>
-
-    <ul class="disclosures">
-      <li>This tool is currently in beta.</li>
-      <li>Workbook matches are based on the current Lyros catalogue.</li>
-      <li>Some example previews may use sample or randomised data.</li>
-      <li>Xero-connected reports require advisor access, user consent and acceptance by Lyros.</li>
-      <li>Free workbooks are general tools and do not replace tailored accounting, tax or financial advice.</li>
-      <li>Xero connection disclosure available on request. See Privacy &amp; disclosure.</li>
-    </ul>
-
+    <p class="fine">This tool is in beta. Workbook matches are based on the current Lyros catalogue. The material on this page provides general information only and does not constitute financial product advice. Xero access is used only after invitation, acceptance and explicit consent.</p>
     <div class="bottom">
       <div>© 2026 Lyros Pty Ltd · ABN 46 689 015 165 · Trading as Lyros Accounting</div>
-      <div class="links">
-        <a href="#">Contact</a>
-        <a href="#">Privacy &amp; disclosure</a>
-        <a href="#">Xero connection disclosure</a>
-      </div>
     </div>
   </div>
 </footer>
 
-<!-- React + Babel for Tweaks panel -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-
 <!-- Page interaction (vanilla) -->
-<script src="app.js"></script>
-
-<!-- Tweaks panel (Babel/JSX) -->
-<script type="text/babel" src="tweaks-panel.jsx"></script>
-<script type="text/babel" src="tweaks.jsx"></script>
+<script src="app-v2.js"></script>
 
 </body>
 </html>

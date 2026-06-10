@@ -1,0 +1,16 @@
+# Dependencies / tooling
+node_modules/
+.wrangler/
+.dev.vars
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+
+# Local design exports and scratch (not part of the deployed site)
+*standalone*.html
+index-original.html
+tweaks.jsx
+tweaks-panel.jsx
+.thumbnail
