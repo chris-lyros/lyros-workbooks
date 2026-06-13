@@ -1474,5 +1474,57 @@
 <!-- Page interaction (vanilla) -->
 <script src="app-v2.js"></script>
 
+<!-- Lyros visitor tracking (matches lyros.com.au footer snippet; posts to n8n IP Monitor) -->
+<script>
+(function () {
+  async function trackVisitor() {
+    try {
+      if (localStorage.getItem('block_tracking') === 'true') return;   // internal user
+      if (navigator.doNotTrack === '1') return;                         // Do Not Track
+
+      let refHost = '';
+      try { refHost = document.referrer ? new URL(document.referrer).hostname : ''; } catch (e) {}
+
+      const qs = new URLSearchParams(window.location.search);
+
+      const res = await fetch('https://ipapi.co/json/');
+      const data = await res.json();
+
+      const visit = {
+        site: window.location.hostname,                  // lyros.com.au vs workbooks.lyros.com.au
+        country: data.country_name || 'Unknown',
+        timestamp: new Date().toISOString(),
+        is_target_market: false,
+        device: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop',
+        referrer_host: refHost,                          // e.g. lnkd.in, www.linkedin.com
+        utm_source: qs.get('utm_source') || '',
+        utm_medium: qs.get('utm_medium') || '',
+        utm_campaign: qs.get('utm_campaign') || ''
+      };
+
+      if (data.country_code === 'AU') {
+        visit.city = data.city;
+        visit.region = data.region;
+        visit.pageUrl = window.location.href;
+        visit.is_target_market = true;
+      }
+
+      const body = JSON.stringify(visit);
+      const url = 'https://n8n.lyroshq.com/webhook/ipaddy';
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(url, new Blob([body], { type: 'application/json' }));
+      } else {
+        await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body });
+      }
+    } catch (e) { /* fail silently */ }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', trackVisitor);
+  } else {
+    trackVisitor();
+  }
+})();
+</script>
+
 </body>
 </html>
