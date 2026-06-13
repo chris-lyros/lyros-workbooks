@@ -1,0 +1,46 @@
+# robots.txt for workbooks.lyros.com.au
+# Lyros Accounting workbook finder. AI crawlers and AI search are welcome.
+# This site exists to be read, summarised, and cited by AI assistants.
+# NOTE: this repo file is served by the Cloudflare Worker (assets.directory='.').
+# Cloudflare's Managed robots.txt must ALSO be turned off at the zone (see README)
+# or it is prepended at the edge and re-blocks the AI crawlers below.
+
+User-agent: *
+Content-Signal: search=yes,ai-input=yes,ai-train=yes
+Allow: /
+
+# AI search, grounding and training (explicitly welcomed)
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: Google-Extended
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Perplexity-User
+Allow: /
+User-agent: CCBot
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+User-agent: Amazonbot
+Allow: /
+User-agent: Bytespider
+Allow: /
+User-agent: cohere-ai
+Allow: /
+User-agent: meta-externalagent
+Allow: /
+
+Sitemap: https://workbooks.lyros.com.au/sitemap.xml
+
+# Machine-readable summary for LLMs: https://workbooks.lyros.com.au/llms.txt

@@ -1,0 +1,59 @@
+# Lyros Accounting Workbook Finder
+
+> Lyros Accounting (Lyros Pty Ltd, ABN 46 689 015 165) is an Australian CFO advisory practice that publishes a free library of 25 ready-to-use Excel finance workbooks for small and medium businesses and finance teams. Every workbook downloads as a real .xlsx file, free and with no sign-up, from https://workbooks.lyros.com.au
+
+Describe a workbook in plain English in the finder, or browse the full catalogue below. The workbooks are built for Australian businesses, including GST and BAS handled the way ATO timing actually works.
+
+## Workbooks
+
+### 1000s Engagement and setup
+
+- [Chart of Accounts Setup](https://workbooks.lyros.com.au/library/1010%20-%20Chart%20of%20Accounts%20Setup.xlsx): Setup register for the chart of accounts your bookkeeper will load into your software.
+- [Supplier to COA Mapping](https://workbooks.lyros.com.au/library/1020%20-%20Supplier%20to%20COA%20Mapping.xlsx): Maps each supplier to a default account, GST treatment, and approval rule.
+
+### 2000s Processes and risks
+
+- [Month-End Close Checklist](https://workbooks.lyros.com.au/library/2010%20-%20Month-End%20Close%20Checklist.xlsx): Step-by-step close checklist with sign-off, ageing, and reconciliation gates.
+- [Accounting File Review Checklist](https://workbooks.lyros.com.au/library/2020%20-%20Accounting%20File%20Review%20Checklist.xlsx): Quarterly review of account balances, posting hygiene, and lookup mappings.
+
+### 4000s Financials and pervasive workings
+
+- [Management Reporting Pack](https://workbooks.lyros.com.au/library/4000%20-%20Management%20Reporting%20Pack.xlsx): Monthly P&L pack with headline, monthly trend, quarter comparison, wages, and working capital.
+- [Board Reporting Pack](https://workbooks.lyros.com.au/library/4001%20-%20Board%20Reporting%20Pack.xlsx): One-page board read-out plus detail, cash position, and commentary.
+- [Budget vs Actual](https://workbooks.lyros.com.au/library/4010%20-%20Budget%20vs%20Actual.xlsx): Side-by-side actuals and budget with monthly and YTD variance.
+- [Monthly Variance and YTD Bridge](https://workbooks.lyros.com.au/library/4020%20-%20Monthly%20Variance%20and%20YTD%20Bridge.xlsx): Walk-the-bridge from prior-month and YTD variance drivers to current actuals.
+- [Departmental Variance Rollup](https://workbooks.lyros.com.au/library/4030%20-%20Departmental%20Variance%20Rollup.xlsx): Department-level P&L rollup with variance to budget per cost centre.
+- [Budgeting Scenario Flex](https://workbooks.lyros.com.au/library/4040%20-%20Budgeting%20Scenario%20Flex.xlsx): Driver-based scenario flex (base, upside, downside) for forward 12 months.
+- [Consolidation from Trial Balances](https://workbooks.lyros.com.au/library/4050%20-%20Consolidation%20from%20Trial%20Balances.xlsx): Per-entity trial balances with eliminations and combined consolidated P&L and BS.
+
+### 5000s Assets
+
+- [13 Week Rolling Cash Flow](https://workbooks.lyros.com.au/library/5100%20-%2013%20Week%20Rolling%20Cash%20Flow.xlsx): Forward 13-week cash flow with inflows, outflows, and opening and closing balances.
+- [Cash Position by Bank](https://workbooks.lyros.com.au/library/5110%20-%20Cash%20Position%20by%20Bank.xlsx): Daily cash position split by bank account with reconciliation to the GL.
+- [GST and BAS Cash Flow Timing](https://workbooks.lyros.com.au/library/5120%20-%20GST%20and%20BAS%20Cash%20Flow%20Timing.xlsx): Cash impact of upcoming BAS payments and refunds across the next four quarters.
+- [Working Capital Cycle](https://workbooks.lyros.com.au/library/5150%20-%20Working%20Capital%20Cycle.xlsx): DSO, DPO, DIO, and cash conversion cycle trend with rolling 12-month chart.
+- [Aged Receivables Chase List](https://workbooks.lyros.com.au/library/5200%20-%20Aged%20Receivables%20Chase%20List.xlsx): Customer-level ageing buckets with follow-up tier and priority for the credit team.
+- [Aged Receivables Analysis](https://workbooks.lyros.com.au/library/5210%20-%20Aged%20Receivables%20Analysis.xlsx): Heatmap of customer ageing exposure, concentration, and top-debtor drill-down.
+- [Depreciation Roll Forward](https://workbooks.lyros.com.au/library/5300%20-%20Depreciation%20Roll%20Forward.xlsx): Asset register with WDV opening, additions, disposals, depreciation, and closing balances.
+
+### 6000s Liabilities and tax
+
+- [GST and BAS Lodgement Tracker](https://workbooks.lyros.com.au/library/6100%20-%20GST%20and%20BAS%20Lodgement%20Tracker.xlsx): Quarterly lodgement and payment register with due dates, amounts, and status.
+- [FBT Exposure Quick Check](https://workbooks.lyros.com.au/library/6200%20-%20FBT%20Exposure%20Quick%20Check.xlsx): Common FBT triggers screened against transactional data with exposure estimate.
+- [Wages and Leave Liability](https://workbooks.lyros.com.au/library/6300%20-%20Wages%20and%20Leave%20Liability.xlsx): Period-end leave balance and accrued wages liability per employee.
+
+### 7000s Revenue
+
+- [Top Customers by Revenue](https://workbooks.lyros.com.au/library/7000%20-%20Top%20Customers%20by%20Revenue.xlsx): Ranked customer revenue with year-on-year and concentration share.
+- [Revenue and Margin Bridge](https://workbooks.lyros.com.au/library/7010%20-%20Revenue%20and%20Margin%20Bridge.xlsx): Account-level revenue decomposition between prior and current quarter.
+
+### 8000s Expenses
+
+- [Top Supplier Review](https://workbooks.lyros.com.au/library/8000%20-%20Top%20Supplier%20Review.xlsx): Ranked supplier spend with ABN-based dedup and year-on-year change.
+- [Payroll to Revenue Ratio](https://workbooks.lyros.com.au/library/8100%20-%20Payroll%20to%20Revenue%20Ratio.xlsx): Payroll cost as a share of revenue over time, by department.
+
+## Engage
+
+- Book a 15-minute call: https://www.lyros.com.au/contact
+- Email: chris@lyros.com.au
+- Monthly management and board reporting, budgeting and cash flow are delivered as CFO advisory engagements: https://www.lyros.com.au/
